@@ -1,0 +1,242 @@
+<DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rasa & Cerita — Jus, Capung & Donat</title>
+  <meta name="description" content="Online shop jus segar, koleksi capung, dan donat aneka rasa. Pesan mudah melalui WhatsApp.">
+  <style>
+    :root{
+      --green:#087f45; --green-dark:#064d38; --green-soft:#e9f8ef;
+      --blue:#087ac1; --blue-soft:#edf7ff;
+      --pink:#e72d75; --pink-soft:#fff0f6;
+      --cream:#fff8e9; --text:#18342d; --muted:#63736e;
+      --white:#fff; --shadow:0 12px 35px rgba(17,55,44,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(1180px,92%);margin:auto}
+
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+      backdrop-filter:blur(10px);box-shadow:0 2px 18px rgba(0,0,0,.06)
+    }
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .brand-icon{font-size:35px}.brand-name{font-size:23px;color:var(--green-dark)}
+    .brand small{display:block;font-size:11px;color:var(--muted);font-weight:700}
+    nav{display:flex;gap:28px;font-weight:700;font-size:14px}
+    nav a:hover{color:var(--green)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .search{border:1px solid #dbe7e2;border-radius:99px;padding:9px 14px;width:170px}
+    .cart{background:var(--green);color:white;border:0;border-radius:50%;width:42px;height:42px;cursor:pointer;font-size:18px}
+    .menu{display:none;border:0;background:none;font-size:26px}
+
+    .hero{background:var(--cream);padding:45px 0 55px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:35px;align-items:center}
+    .eyebrow{color:var(--green);font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    .hero h1{font-size:clamp(40px,5vw,66px);line-height:1.04;margin:12px 0 18px}
+    .hero h1 span:nth-child(1){color:#f3a600}.hero h1 span:nth-child(2){color:var(--green)}.hero h1 span:nth-child(3){color:var(--pink)}
+    .hero p{font-size:18px;color:var(--muted);max-width:540px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font-weight:800;cursor:pointer}
+    .btn-green{background:var(--green);color:white}.btn-blue{background:var(--blue);color:white}.btn-pink{background:var(--pink);color:white}
+    .hero .btn{margin-top:24px}
+    .hero-image{border-radius:30px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero-image img{width:100%;height:auto}
+
+    .section{padding:55px 0}
+    .category{border-radius:var(--radius);padding:25px}
+    .category.jus{background:var(--green-soft)}.category.capung{background:var(--blue-soft)}.category.donat{background:var(--pink-soft)}
+    .category-head{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:center;margin-bottom:22px}
+    .category-title{font-size:31px;font-weight:900}
+    .category-title span{font-size:43px;display:block}
+    .category-desc{color:var(--muted);font-size:14px}
+    .category-desc h3{font-size:21px;color:var(--text);margin-bottom:4px}
+    .products{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+    .card{background:#fff;border-radius:15px;padding:9px;box-shadow:0 5px 18px rgba(17,55,44,.08);overflow:hidden}
+    .card img{width:100%;aspect-ratio:1/1.05;object-fit:cover;border-radius:10px}
+    .card h4{font-size:14px;margin:9px 4px 2px}
+    .price{font-weight:900;margin:0 4px 8px;color:var(--green)}
+    .card .btn{width:100%;justify-content:center;padding:9px 7px;font-size:12px}
+    .capung .price{color:var(--green)} .donat .price{color:var(--pink)}
+    .capung .card .btn{background:var(--blue)} .donat .card .btn{background:var(--pink)}
+
+    .benefits{padding:25px 0}
+    .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .benefit{display:flex;gap:12px;align-items:center;padding:15px}
+    .benefit-icon{font-size:28px}.benefit h4{font-size:14px}.benefit p{font-size:12px;color:var(--muted)}
+
+    footer{background:var(--green-dark);color:white;padding:50px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+    footer p,footer li{color:#c9ddd5;font-size:14px}
+    footer h3{margin-bottom:12px}
+    footer ul{list-style:none;display:grid;gap:7px}
+    .wa-footer{display:inline-flex;margin-top:16px;background:#18c66b;padding:12px 18px;border-radius:999px;font-weight:800}
+    .copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:35px;padding-top:18px;text-align:center;font-size:12px;color:#a9c3ba}
+
+    .wa-float{
+      position:fixed;right:20px;bottom:20px;z-index:60;background:#19c86a;color:#fff;
+      width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:27px;
+      box-shadow:0 10px 25px rgba(0,0,0,.22)
+    }
+
+    .toast{
+      position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);
+      background:#153d32;color:white;padding:12px 18px;border-radius:99px;z-index:100;
+      transition:.3s;box-shadow:var(--shadow);font-size:14px
+    }
+    .toast.show{transform:translate(-50%,0)}
+
+    @media(max-width:900px){
+      nav{display:none}.menu{display:block}.search{width:130px}
+      .hero-grid{grid-template-columns:1fr}.hero-image{order:-1}
+      .products{grid-template-columns:repeat(3,1fr)}
+      .benefit-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      .nav{height:65px}.brand-name{font-size:18px}.search{display:none}
+      .hero{padding:25px 0 35px}.hero h1{font-size:40px}
+      .category-head{grid-template-columns:1fr}
+      .products{grid-template-columns:repeat(2,1fr)}
+      .benefit-grid,.footer-grid{grid-template-columns:1fr}
+      .section{padding:35px 0}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand">
+      <div class="brand-icon">🥤</div>
+      <div><div class="brand-name">Rasa & Cerita</div><small>Jus • Capung • Donat</small></div>
+    </a>
+    <nav>
+      <a href="#beranda">Beranda</a><a href="#produk">Produk</a><a href="#tentang">Tentang Kami</a><a href="#kontak">Kontak</a>
+    </nav>
+    <div class="nav-actions">
+      <input id="search" class="search" placeholder="Cari produk..." oninput="filterProducts()">
+      <button class="cart" onclick="showCart()">🛒</button>
+      <button class="menu" onclick="alert('Menu: Beranda • Produk • Tentang Kami • Kontak')">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="beranda">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Satu tempat, tiga kesenangan!</div>
+        <h1>Nikmati <span>Kesegaran Jus</span>, Keunikan <span>Capung</span>, dan Kelezatan <span>Donat</span></h1>
+        <p>Segar, unik, dan lezat. Pilih favoritmu lalu pesan langsung melalui WhatsApp.</p>
+        <a class="btn btn-green" href="#produk">🛒 Belanja Sekarang</a>
+      </div>
+      <div class="hero-image">
+        <img src="referensi-layout.png" alt="Referensi layout toko jus, capung, dan donat">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="produk">
+    <div class="container">
+
+      <div class="category jus" id="jus">
+        <div class="category-head">
+          <div class="category-title"><span>🥤</span>Jus</div>
+          <div class="category-desc"><h3>Segar, Alami, Penuh Nutrisi</h3>Nikmati jus buah pilihan dengan rasa lezat. Cocok menemani aktivitas harianmu.</div>
+        </div>
+        <div class="products">
+          <article class="card" data-name="jus mangga"><img src="jus-mangga.jpg" alt="Jus Mangga"><h4>Jus Mangga</h4><div class="price">Rp 8.000</div><button class="btn btn-green" onclick="order('Jus Mangga','Rp 8.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="jus strawberry"><img src="jus-strawberry.jpg" alt="Jus Strawberry"><h4>Jus Strawberry</h4><div class="price">Rp 8.000</div><button class="btn btn-green" onclick="order('Jus Strawberry','Rp 8.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="jus alpukat"><img src="jus-alpukat.jpg" alt="Jus Alpukat"><h4>Jus Alpukat</h4><div class="price">Rp 10.000</div><button class="btn btn-green" onclick="order('Jus Alpukat','Rp 10.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="jus jeruk"><img src="jus-jeruk.jpg" alt="Jus Jeruk"><h4>Jus Jeruk</h4><div class="price">Rp 8.000</div><button class="btn btn-green" onclick="order('Jus Jeruk','Rp 8.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="jus semangka"><img src="jus-semangka.jpg" alt="Jus Semangka"><h4>Jus Semangka</h4><div class="price">Rp 8.000</div><button class="btn btn-green" onclick="order('Jus Semangka','Rp 8.000')">🛒 Pesan</button></article>
+        </div>
+      </div>
+
+      <div class="category capung" id="capung" style="margin-top:28px">
+        <div class="category-head">
+          <div class="category-title"><span>🪻</span>Capung</div>
+          <div class="category-desc"><h3>Lucu, Unik, dan Penuh Warna</h3>Koleksi capung dengan berbagai jenis dan warna. Cocok untuk hiasan, gantungan kunci, atau hadiah.</div>
+        </div>
+        <div class="products">
+          <article class="card" data-name="capung biru"><img src="capung-biru.jpg" alt="Capung Biru"><h4>Capung Biru</h4><div class="price">Rp 15.000</div><button class="btn" onclick="order('Capung Biru','Rp 15.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="capung merah"><img src="capung-merah.jpg" alt="Capung Merah"><h4>Capung Merah</h4><div class="price">Rp 15.000</div><button class="btn" onclick="order('Capung Merah','Rp 15.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="capung hijau"><img src="capung-hijau.jpg" alt="Capung Hijau"><h4>Capung Hijau</h4><div class="price">Rp 15.000</div><button class="btn" onclick="order('Capung Hijau','Rp 15.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="capung emas"><img src="capung-emas.jpg" alt="Capung Emas"><h4>Capung Emas</h4><div class="price">Rp 15.000</div><button class="btn" onclick="order('Capung Emas','Rp 15.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="capung ungu"><img src="capung-ungu.jpg" alt="Capung Ungu"><h4>Capung Ungu</h4><div class="price">Rp 15.000</div><button class="btn" onclick="order('Capung Ungu','Rp 15.000')">🛒 Pesan</button></article>
+        </div>
+      </div>
+
+      <div class="category donat" id="donat" style="margin-top:28px">
+        <div class="category-head">
+          <div class="category-title"><span>🍩</span>Donat</div>
+          <div class="category-desc"><h3>Lembut, Manis, Bikin Nagih</h3>Donat dengan berbagai rasa pilihan, bertekstur lembut dan topping yang menggugah selera.</div>
+        </div>
+        <div class="products">
+          <article class="card" data-name="donat cokelat"><img src="donat-cokelat.jpg" alt="Donat Cokelat"><h4>Cokelat</h4><div class="price">Rp 6.000</div><button class="btn" onclick="order('Donat Cokelat','Rp 6.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="donat keju"><img src="donat-keju.jpg" alt="Donat Keju"><h4>Keju</h4><div class="price">Rp 6.000</div><button class="btn" onclick="order('Donat Keju','Rp 6.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="donat strawberry"><img src="donat-strawberry.jpg" alt="Donat Strawberry"><h4>Strawberry</h4><div class="price">Rp 6.000</div><button class="btn" onclick="order('Donat Strawberry','Rp 6.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="donat matcha"><img src="donat-matcha.jpg" alt="Donat Matcha"><h4>Matcha</h4><div class="price">Rp 6.000</div><button class="btn" onclick="order('Donat Matcha','Rp 6.000')">🛒 Pesan</button></article>
+          <article class="card" data-name="donat tiramisu"><img src="donat-tiramisu.jpg" alt="Donat Tiramisu"><h4>Tiramisu</h4><div class="price">Rp 6.000</div><button class="btn" onclick="order('Donat Tiramisu','Rp 6.000')">🛒 Pesan</button></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits" id="tentang">
+    <div class="container benefit-grid">
+      <div class="benefit"><div class="benefit-icon">🚚</div><div><h4>Pengiriman Cepat</h4><p>Pesanan diproses dengan cepat.</p></div></div>
+      <div class="benefit"><div class="benefit-icon">🌿</div><div><h4>Bahan Berkualitas</h4><p>Menggunakan pilihan terbaik.</p></div></div>
+      <div class="benefit"><div class="benefit-icon">🛡️</div><div><h4>Pembayaran Aman</h4><p>Transaksi mudah dan terpercaya.</p></div></div>
+      <div class="benefit"><div class="benefit-icon">🎧</div><div><h4>Layanan Ramah</h4><p>Siap membantu kapan saja.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<footer id="kontak">
+  <div class="container footer-grid">
+    <div><div class="brand"><div class="brand-icon">🥤</div><div><div class="brand-name" style="color:white">Rasa & Cerita</div><small>Jus • Capung • Donat</small></div></div><p style="margin-top:14px">Segar, unik, dan lezat dalam satu tempat.</p></div>
+    <div><h3>Pesan Sekarang</h3><p>Hubungi kami melalui WhatsApp untuk pemesanan atau tanya produk.</p><a class="wa-footer" id="waFooter" href="#" target="_blank">💬 Chat via WhatsApp</a></div>
+    <div><h3>Kontak Kami</h3><ul><li>📞 +62 895 2448 5761</li><li>📷 @rasa.cerita</li><li>📍 Indonesia</li><li>AHMAD SABRI</li></ul></div>
+  </div>
+  <div class="container copyright">© 2026 Rasa & Cerita. Semua hak dilindungi.</div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" aria-label="Pesan melalui WhatsApp">💬</a>
+<div class="toast" id="toast">Produk ditambahkan ke pesanan.</div>
+
+<script>
+  // GANTI nomor ini dengan nomor WhatsApp toko, format internasional tanpa + dan tanpa spasi.
+  const WHATSAPP_NUMBER = "6289524485761";
+
+  function order(product, price){
+    const text = `Halo Rasa & Cerita! Saya ingin memesan:%0A%0A• ${product}%0A• Harga: ${price}%0A%0AApakah masih tersedia?`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+  }
+
+  function showCart(){
+    const toast=document.getElementById("toast");
+    toast.textContent="Keranjang siap digunakan. Untuk checkout, pilih produk dan pesan lewat WhatsApp.";
+    toast.classList.add("show");
+    setTimeout(()=>toast.classList.remove("show"),3500);
+  }
+
+  function filterProducts(){
+    const q=document.getElementById("search").value.toLowerCase().trim();
+    document.querySelectorAll(".card").forEach(card=>{
+      card.style.display=card.dataset.name.includes(q) ? "" : "none";
+    });
+  }
+
+  const generalMessage = encodeURIComponent("Halo Rasa & Cerita! Saya ingin bertanya tentang produk.");
+  document.getElementById("waFooter").href=`https://wa.me/${WHATSAPP_NUMBER}?text=${generalMessage}`;
+  document.getElementById("waFloat").href=`https://wa.me/${WHATSAPP_NUMBER}?text=${generalMessage}`;
+</script>
+</body>
+</html>
